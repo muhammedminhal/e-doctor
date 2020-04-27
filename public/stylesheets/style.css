@@ -1,0 +1,28 @@
+.row{
+  align-content: center;
+  page-break-after: auto;
+  padding-left: auto;
+  padding-top: 80px;
+  padding-bottom: 180px;
+}
+.row .choose{
+  color:rgb(17, 77, 100);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 40px;
+}
+.jumbotron img{
+padding-right: 180px;
+padding-left: 390px;
+padding-top: 20px;
+
+}
+.jumbotron .title{
+  color: rgb(17, 77, 100);
+  text-align: center;
+  padding-right: 100px;
+}
+
+.jumbotron .discription{
+  padding-top: 30px;
+  color: rgb(148, 148, 148);
+}

@@ -1,0 +1,23 @@
+<h2>Patients list</h2>
+<table class="table table-striped">
+     <thead>
+    <tr>
+        
+        <th>email</th>
+        <th>mobile</th>
+        <th>city</th>
+        <th>blood</th>
+    </tr>
+    </thead>
+    <tbody >
+    {{#each data}}
+    <tr>
+        <td>{{this.email}}</td>
+        <td>{{this.mobile}}</td>
+        <td>{{this.city}}</td>
+        <td>{{this.blood}}</td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
+</div>
