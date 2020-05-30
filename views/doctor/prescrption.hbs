@@ -1,0 +1,37 @@
+{{>header}}
+<div style="padding-bottom:25px;padding-top:80px;padding-right:24px;">
+<div class="container" style="background-color: rgba(26, 161, 66, 0.596); padding-left:43px;padding-right:43px;">
+
+<h1>
+consult
+</h1>
+<div>
+
+
+</div>
+<table class="table table-striped">
+     <thead>
+    <tr>
+      
+        <th>medicine</th>
+        <th>comments</th>
+       
+      
+
+    </tr>
+    </thead>
+    <tbody >
+   {{#each cons}}
+    <tr>
+       
+        <td>{{this.medicine}}</td>
+         <td>{{this.comments}}</td>
+    
+    </tr>
+{{/each}}
+    </tbody>
+</table>
+</div>
+
+</div>
+

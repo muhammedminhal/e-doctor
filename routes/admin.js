@@ -58,15 +58,16 @@ router.get('/signup', function(req, res, next) {
 
 router.post('/profile', (req, res)=>{
     var admin = new AdminModel();
-    admin.fullname = req.body.fullname;
+    admin.name = req.body.fullname;
     admin.email =req.body.email;
     admin.mobile =req.body.mobile;
     admin.city =req.body.city;
-    admin.specified =req.body.specified;
+    admin.blood =req.body.blood;
+    admin.specialized =req.body.specified;
     admin.save((err ,doc)=>{
         if(!err)
         {
-            res.redirect('/admin/list')
+            res.send('success')
         }
         else
         {
@@ -74,6 +75,7 @@ router.post('/profile', (req, res)=>{
         }
     })
 });
+
 
 // doctor list route
 

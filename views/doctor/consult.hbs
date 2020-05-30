@@ -1,0 +1,30 @@
+{{>header}}
+ <div class="col-md-8" style="text-align: center; padding-top:40px;padding-left:290px ">
+ <form action="/doctor/consult" method="post">
+            <div class="form-group">
+        
+<h1 class="form-group" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;color:rgba(8, 65, 100, 0.747)">
+   Patient  {{hell.name}}'s Prescription
+</h1>
+  <div class="form-group">
+ 
+      <input type="hidden" readonly class="form-control-plaintext" id="staticEmail" name="email" value="{{hell.email}}">
+    </div>
+
+                <label for="medicine">Add medicne</label>
+                <input type="text" id="medicine" style="background-color: rgba(4, 51, 90, 0.795); color:white" placeholder="Prescription" name="medicine" class="form-control">
+                <div class="form-group">
+    <label for="comments">comments</label>
+    <textarea class="form-control" id="comments" name="comments" placeholder="comments" style="background-color:rgba(13, 110, 175, 0.418);" rows="3"></textarea>
+  </div>
+  </div>
+  <a href="/doctor/prescrption"><button type="button" class="btn btn-primary" style="float: inline-start; background-color:rgba(70, 130, 243, 0.651)">view</button></a><br>
+   <ul><a href="/doctor/appoitments"  style="float: left;padding-bottom:200px;padding-top:15px;">Back</a></ul>
+
+  
+   <button type="submit" class="btn btn-primary" style="float: right;">submit</button></a><br>
+ 
+                  </form>
+            
+             </div>
+            </div>

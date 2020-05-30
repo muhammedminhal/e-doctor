@@ -6,10 +6,6 @@ var DoctorSchema = new mongoose.Schema({
         type : String,
         required:"Required"
     },
-    courseId : {
-        type : String,
-    
-    },
     email : {
         type : String,
         required:"Required"

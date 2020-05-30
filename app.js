@@ -22,6 +22,7 @@ mongoose.connect('mongodb://localhost:27017/edoctor',{ useNewUrlParser: true,use
 var Booking = require("./models/booking");
 var newdoctor = require("./models/addDoctors");
 var patient = require('./models/patient');
+var consult = require('./models/consult')
 
 require('./config/passport1');
 

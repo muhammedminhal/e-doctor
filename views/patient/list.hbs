@@ -1,4 +1,4 @@
-
+{{>header2}}
 
 <h1>
     Appointments
@@ -6,22 +6,30 @@
 <table class="table table-striped">
      <thead>
     <tr>
-        
-        <th>date</th>
-        <th>time</th>
-        <th>doctor</th>
-        <th>specified</th>
+         <th>email</th>
+        <th>Name</th>
+        <th>mobile</th>
+        <th>Age</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Doctor</th>
+        <th>Specified</th>
+       
     </tr>
     </thead>
     <tbody >
-    {{#each data}}
+   {{#each data}}
     <tr>
+        <td>{{this.email}}</td>
+        <td>{{this.name}}</td>
+         <td>{{this.mobile}}</td>
+        <td>{{this.age}}</td>
         <td>{{this.date}}</td>
         <td>{{this.time}}</td>
         <td>{{this.doctor}}</td>
         <td>{{this.specified}}</td>
     </tr>
-    {{/each}}
+{{/each}}
     </tbody>
 </table>
 </div>

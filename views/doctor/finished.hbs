@@ -1,0 +1,37 @@
+{{>header}}
+
+    <div class="tabPanel"><div style="padding-top:1px">
+    
+<div class="container" style="background-color:rgba(8, 85, 8, 0.616);">
+  
+<h1>
+    Finished Appointments
+</h1>
+<table class="table table-striped">
+     <thead>
+    <tr>
+         <th>email</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Doctor</th>
+        <th>Specified</th>
+    </tr>
+    </thead>
+    <tbody >
+   {{#each finished}}
+    <tr >
+        <td style="padding-right:20px;">{{this.email}}</td>
+        <td><a href="/doctor/views/?id={{this.email}}">{{this.name}}</a></td>
+        <td>{{this.age}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.time}}</td>
+        <td>{{this.doctor}}</td>
+        <td>{{this.specified}}</td>
+    </tr>
+{{/each}}
+    </tbody>
+</table>
+</div>
+</div></div>

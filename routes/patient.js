@@ -5,7 +5,10 @@ var BookingModel = mongoose.model('Booking');
 var PatientModel = mongoose.model('patient');
 var passport = require('passport');
 var Patient = require('../models/patient');
+var Booking = require('../models/booking');
+var doctor = mongoose.model('doctor')
 var bcrypt = require('bcrypt-nodejs');
+var moment = require('moment')
 
 //sisnup route
 
@@ -34,94 +37,136 @@ router.get('/signup', function(req, res, next) {
   });
 });
 
-// patient list route 
 
-router.get('/prlist',(req, res)=>{
-  PatientModel.find((err, docs)=>{
-      if(!err){
-          res.render('patient/prlist',{data : docs})
-      }
-      else{
-          res.send('error')
-      }
-  });
-  });
-  
+//signin route
+
+router.get('/signin',function(req, res, next){
+  var messages = req.flash('error');
+  res.render('patient/signin', {messages: messages, hasErrors: messages.length > 0});
+});
+
+router.post('/signin', passport.authenticate('local.psignin'), function(req, res, next) {
+  if (req.flash('error') != null){
+    Patient.findOne({'email' : req.body.email}, function(err, patient) {
+      req.session.loginpatient=patient.email
+      res.redirect('/patient/profile');
+    })
+  }else{
+    res.redirect("/patient/signin")
+  }
+});
+
 /* get profile route */
 
-  router.get('/profile',isAuthenticated ,(req, res,)=>{
-    res.render('patient/profile');
-  });
 
-  router.post("/profile",(req,res)=>{
-
-    var booking = new BookingModel();
-    booking.specified = req.body.specified;
-    booking.doctor  = req.body.doctor ;
-    booking.date = req.body.date;
-    booking.time = req.body.time;
-    booking.save((err ,doc)=>{
-      if(!err)
-      {
-          res.redirect('/patient/list')
+router.get('/profile',(req,res)=>{
+  var email=req.body.email
+  Patient.findOne({"email":req.session.loginpatient},(err,patient)=>{
+    if(err){
+      res.send("error:"+err)
+    }
+    doctor.find({"":email},(err,result)=>{
+      if(err){
+        res.send('error:'+err)
       }
-      else
-      {
-          res.send('Error occured');
-      }
+        res.render('patient/profile',{doctor:result,patient: patient})
+    })
   })
 });
+
+
+// router.get('/profile',(req,res)=>{
+
+// })
+// // !!!!!
+// // router.get('/profile',(req, res,)=>{
+//   id=req.session.loginpatient
+//   Patient.findOne({"_id":id},(err,patient)=>{
+//     if(!err){
+//       res.render('patient/profile',{patient: patient});
+//     console.log("data:"+patient)
+//     }else{
+//       send("error:"+err)
+//     }
+//   })
+ 
+// });
+
+router.post("/profile",(req,res)=>{
+  var booking = new BookingModel({
+    email:req.body.email,
+    name:req.body.name,
+    age:req.body.age,
+    specified : req.body.specified,
+    doctor  : req.body.doctor ,
+    date : moment(req.body.date).format("DD/MMM/YYYY"),
+    mobile:req.body.mobile,
+    time : req.body.time});
+
+  booking.save((err ,doc)=>{
+    if(!err)
+    {
+        res.redirect('/patient/list');
+    }
+    else
+    {
+        res.send('Error occured');
+    }
+})
+});
+
+
 
 // booking list route
 
 router.get('/list',(req, res)=>{
-  BookingModel.find((err, docs)=>{
-      if(!err){
-          res.render('patient/list',{data : docs})
-      }
-      else{
-          res.send('error')
-      }
+  var mobile = req.session.loginpatient
+  BookingModel.find({"email":mobile})
+  .then((docs)=>{
+    console.log(docs)
+    res.render('patient/list',{data :docs});
+  })
+  .catch((err)=>{
+    console.log(err)
   });
   });
+
   
 
-  //signin route
+// patient list route 
 
-  router.get('/signin', function(req, res, next){
-    var messages = req.flash('error');
-    res.render('patient/signin', {messages: messages, hasErrors: messages.length > 0});
-  });
+// router.get('/prlist',(req, res)=>{
+//   PatientModel.find((err, docs)=>{
+//       if(!err){
+//           res.render('patient/prlist',{data : docs})
+//       }
+//       else{
+//           res.send('error')
+//       }
+//   });
+//   });
   
-  router.post('/signin', passport.authenticate('local.psignin',{
-    failureRedirect: '/patient/signin',
-    failureFlash: true
-  }), function(req, res, next) {
 
-    
-    if (req.flash('error') != null){
-      Patient.findOne({'email' : req.body.email}, function(err, patient) {
-        res.render('patient/profile',{patient : patient});
-      })
-    }
-  });
+
+  
 
   //my details route byone
 
   router.get("/myprofile",(req,res)=>{
-   var email = req.query.id
-    Patient.findOne({'email' :email},((err, patient)=>{
+   var mobile = req.session.loginpatient
+    Patient.findOne({'email' :mobile},((err, result)=>{
       if(!err){
-          res.render('patient/myprofile',{patient : patient})  
-      }
-      else{
+          res.render('patient/myprofile',{binjo: result})  
+      }else{
           res.send('error')
       }
+      console.log()
   }));
   });
   
 
 // authentication funtion to authenticate
+
 
 function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
@@ -136,7 +181,5 @@ router.get('/logout',(req, res,)=>{
   req.session.destroy();
   res.redirect('/');
 });
-
-
 
   module.exports = router;

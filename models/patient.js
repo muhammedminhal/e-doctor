@@ -6,7 +6,7 @@ var schema = new Schema({
     name: {type: String, required: true},
     email: {type: String, required: true},
     password: {type:String, required: true},
-    mobile: {type:String, required: true},
+    mobile: {type:String, required: true, default:"Please Update your Phone number"},
     city: {type:String, required: true},
     blood: {type:String, required: true}
 });

@@ -1,43 +1,32 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-     
-       <a class="navbar-brand" href="">Welcome {{patient.name}}</a>
 
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="navbar-brand" href="/patient/myprofile/?id={{patient.email}}">My Details</a></li>
-       
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/patient/list">view Bookings list</a></li>
-        
-      <li><a href="/patient/logout">Logout</a></li>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
+{{>header2}}
 
 <div style="padding-left: 280px; ">
 <h1>Booking</h1>
 <form action="/patient/profile" method="post">
  <input type="hidden" name="_id" value="">  
  <div  class="col-sm-8 offset-md-6" style="background-color: rgb(13, 15, 15);margin-top: 25px;padding-bottom:20px;padding-top:20px">
+  
+  <div class="form-group">
+    <label for="staticEmail" >Email</label>
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="email" value="{{patient.email}}">
+    </div>
+         <div class="form-group">
+    <label for="staticEmail" >Name</label>
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="name" value="{{patient.name}} ">
+    </div>  
+         <div class="form-group">
+    <label for="staticEmail" >Mobile</label>
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="mobile" value="{{patient.mobile}} ">
+    </div> 
+             <div class="form-group">
+                <label for="age">age</label>
+                <input type="number"  placeholder="age" name="age" class="form-control">
+            </div>
             <div class="form-group">
                 <label for="date">date</label>
                 <input type="date"  placeholder="date" name="date" class="form-control">
-            </div>
+            </div> 
             <div class="form-group">
                 <label for="time">time</label>
                 <input type="time"  placeholder="time" name="time" class="form-control">
@@ -46,9 +35,10 @@
       <label for="doctor">doctor</label>
       <select id="doctor" class="form-control"  name="doctor">
         <option selected>Nil..</option>
-        <option >DR.Jhon</option>
-        <option>DR.Sabastian</option>
-        <option>DR.Paul</option>
+        {{#each doctor}}
+        <option >{{this.name}}</option>
+        {{/each}}
+       
         </div>
       </select>
     </div>

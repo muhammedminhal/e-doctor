@@ -1,5 +1,5 @@
 
-
+{{>header2}}
 <div class="container"></div>
 
 <div class=" row">
@@ -7,31 +7,30 @@
    <div  class="col-sm-8 offset-md-6" style="background-color: rgb(13, 15, 15);margin-top: 25px;padding-bottom:20px;padding-top:20px">
         <h1>My Details</h1>
         
-       
-        <form action="/patient/signup" method="post">
+        <form action="/patient/myprofile" method="post">
  <div class="form-group col-md-6">
     <label for="staticEmail" class="col-md-3 col-form-label">Name</label>
     <div class="col-md-6">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{patient.name}}">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{binjo.name}}">
     </div>
   </div>
  <div class="form-group col-md-6">
     <label for="staticEmail" class="col-md-3 col-form-label">Email</label>
     <div class="col-md-6">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{patient.email}}">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{binjo.email}}">
     </div>
   </div>
    <div class="form-row">
    <div class="form-group col-md-6">
     <label for="staticEmail" class="col-md-3 col-form-label">Phone Number</label>
     <div class="col-md-6">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{patient.mobile}}">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{binjo.mobile}}">
     </div>
   </div>
    <div class="form-group col-md-6">
     <label for="staticEmail" class="col-md-3 col-form-label">city</label>
     <div class="col-md-6">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{patient.city}}">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{binjo.city}}">
     </div>
   </div>
   </div>

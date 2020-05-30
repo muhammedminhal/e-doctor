@@ -1,0 +1,182 @@
+{{>header}}
+
+
+{{!-------------------------------------------------------------}}
+<div class="tabContainer">
+        <div class="buttonContainer"  >
+            <button onclick="showPanel(0)">Upcoming</button>    
+            <button onclick="showPanel(1)">Expired</button>
+            <button  onclick="showPanel(2)">Todays</button>
+            <button  onclick="showPanel(3)">Cancelled</button>
+        </div>
+         <div class="tabPanel"><div style="padding-top:1px;">
+<div class="container" style="background-color: rgba(26, 161, 66, 0.596); padding-top:20px" >
+<h1>
+Upcoming Appointments
+</h1>
+<table class="table table-striped">
+     <thead>
+    <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Doctor</th>
+        <th>Specified</th>
+        <th>Consult</th>
+        <th>Cancel</th>
+    </tr>
+    </thead>
+    <tbody >
+   {{#each dum}}
+    <tr>
+        <td>{{this.email}}</td>
+        <td><a href="/doctor/views/?id={{this.email}}">{{this.name}}</a></td>
+        <td>{{this.age}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.time}}</td>
+        <td>{{this.doctor}}</td>
+        <td>{{this.specified}}</td>
+     <td><a href="/doctor/consult?id={{this.email}}"><button type="button" style="font-size: 12px;" class="btn btn-success">consult</button></a></td>
+<td><a href="/doctor/delete/{{this._id}}" onclick="return confirm('This will Cancel {{this.name}}`s Booking!! ');"><button type="button" style="font-size: 12px;" class="btn btn-success"><i class="fas fa-trash fa-lg" style="font-size: 12px;" aria-hidden="true">Cancel Booking</button></i></a></td>
+    </tr>
+{{/each}}
+    </tbody>
+</table>
+</div>
+</div></div>
+         <div class="tabPanel"><div style="padding-top:1px">
+    
+<div class="container" style="background-color: brown;">
+  
+<h1>
+  Expired Appointments
+</h1>
+<table class="table table-striped">
+     <thead>
+    <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Doctor</th>
+        <th>Specified</th>
+    </tr>
+    </thead>
+    <tbody >
+   {{#each data}}
+    <tr>
+        <td>{{this.email}}</td>
+        <td><a href="/doctor/views/?id={{this.email}}">{{this.name}}</a></td>
+        <td>{{this.age}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.time}}</td>
+        <td>{{this.doctor}}</td>
+        <td>{{this.specified}}</td>
+        
+    </td> 
+    </tr>
+{{/each}}
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+         <div class="tabPanel"><div style="padding-top:1px">
+    
+<div class="container" style="background-color: rgba(191, 231, 14, 0.911);">
+  
+<h1>
+    Today Appointments
+</h1>
+<table class="table table-striped">
+     <thead>
+    <tr>
+         <th>Email</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Doctor</th>
+        <th>Specified</th>
+        <th>Consult</th>
+        <th>Cancel</th>
+        <th>Mark consulted</th>
+    </tr>
+    </thead>
+    <tbody >
+   {{#each today}}
+    <tr>
+        <td>{{this.email}}</td>
+        <td><a href="/doctor/views/?id={{this.email}}">{{this.name}}</a></td>
+        <td>{{this.age}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.time}}</td>
+        <td>{{this.doctor}}</td>
+        <td>{{this.specified}}</td>
+       <td><a href="/doctor/consult?id={{this.email}}"><button type="button" class="btn btn-success">Consult</button></a></td>
+<td><a href="/doctor/delete/{{this._id}}" onclick="return confirm('This will Cancel {{this.name}}`s Booking!! ');"><button type="button" style="font-size: 12px;" class="btn btn-success"><i class="fas fa-trash fa-lg" style="font-size: 12px;" aria-hidden="true">Cancel Booking</button></i></a></td> 
+<td><a href="/doctor/done/{{this.id}}" onclick="return confirm('Click OK to mark  {{this.name}} finished conslting ');"><button type="button" class="btn btn-success">Done</button></a></td>    </tr>
+{{/each}}
+    </tbody>
+</table>
+</div>
+</div></div>
+
+{{!-- jj --}}
+
+    <div class="tabPanel"><div style="padding-top:1px">
+    
+<div class="container" style="background-color: rgb(173, 46, 46);">
+
+<h1>
+    Cancelled Appointments
+</h1>
+<table class="table table-striped">
+     <thead>
+    <tr>
+         <th>Email</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Doctor</th>
+        <th>Specified</th>
+    </tr>
+    </thead>
+    <tbody >
+   {{#each canclled}}
+    <tr >
+        <td style="padding-right:20px;">{{this.email}}</td>
+        <td><a href="/doctor/views/?id={{this.email}}">{{this.name}}</a></td>
+        <td>{{this.age}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.time}}</td>
+        <td>{{this.doctor}}</td>
+        <td>{{this.specified}}</td>
+    </tr>
+{{/each}}
+    </tbody>
+</table>
+</div>
+</div></div>
+    </div>
+<script type="text/javascript">
+var tabButtons = document.querySelectorAll(".tabContainer .buttonContainer button")
+var tabPanels = document.querySelectorAll(".tabContainer .tabPanel")
+
+function showPanel(panelIndex,colorCode){
+    tabButtons.forEach(function(node){
+        node.style.color="white";
+    });
+   
+    tabButtons[panelIndex].style.color="blue";
+    tabPanels.forEach(function(node){
+        node.style.display="none";
+    });
+    tabPanels[panelIndex].style.display="block";
+}
+showPanel(2,"#44336")
+</script>
