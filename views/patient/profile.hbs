@@ -1,51 +1,64 @@
+<div class="main">
+  <div class="top">
+    {{>header2}}
+  </div>
+  <div class="mid">
 
-{{>header2}}
+        
+    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
+        
+        
+        <div class="panel panel-default" style="margin-top: 127px;">
+            <div class="panel-heading">
+                <div class="panel-title text-center">Hello  {{patient.name}}</div>
+            </div>     
 
-<div style="padding-left: 280px; ">
-<h1>Booking</h1>
-<form action="/patient/profile" method="post">
- <input type="hidden" name="_id" value="">  
- <div  class="col-sm-8 offset-md-6" style="background-color: rgb(13, 15, 15);margin-top: 25px;padding-bottom:20px;padding-top:20px">
-  
-  <div class="form-group">
-    <label for="staticEmail" >Email</label>
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="email" value="{{patient.email}}">
-    </div>
-         <div class="form-group">
-    <label for="staticEmail" >Name</label>
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="name" value="{{patient.name}} ">
-    </div>  
-         <div class="form-group">
-    <label for="staticEmail" >Mobile</label>
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="mobile" value="{{patient.mobile}} ">
-    </div> 
-             <div class="form-group">
-                <label for="age">age</label>
-                <input type="number"  placeholder="age" name="age" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="date">date</label>
-                <input type="date"  placeholder="date" name="date" class="form-control">
-            </div> 
-            <div class="form-group">
-                <label for="time">time</label>
-                <input type="time"  placeholder="time" name="time" class="form-control">
-            </div>
-             <div class="form-group col-sm-6">
-      <label for="doctor">doctor</label>
-      <select id="doctor" class="form-control"  name="doctor">
-        <option selected>Nil..</option>
-        {{#each doctor}}
+                <form name="form" id="form" class="form-horizontal"  action="/patient/profile" method="post">
+                  
+                        
+                        <input  type="hidden" class="form-control" name="email" placeholder="Name" value="{{patient.email}}">
+                   
+
+                   <div>
+                     <p class="btn btn success" style="padding-left: 146px;
+    padding-top: 17px; text-transform: uppercase;">Please fill this form to book your appoitnment</p>
+                   </div>
+                  
+                        <input  type="hidden" class="form-control" name="name"  placeholder="email"  value="{{patient.name}} ">                                      
+                  
+
+                  
+
+                       
+                        <input  type="hidden" class="form-control" name="mobile" placeholder="mobile" value="{{patient.mobile}} ">
+                     
+                      <div class="input-group">
+                        
+                        <input type="number" class="form-control" name="age" placeholder="age in numbers"  min="5" max="120"   >
+                    </div>     
+
+                    <div class="input-group">
+              
+                        <input  type="date" class="form-control" name="date" placeholder="date" required>
+                    </div>  
+
+                     <div class="input-group">
+                       
+       
+      <select id="doctor" class="form-control"  name="doctor" required>
+        <option selected>doctor..</option>
+       {{#each doctor}}
         <option >{{this.name}}</option>
         {{/each}}
-       
         </div>
       </select>
-    </div>
-              <div class="form-group col-sm-6">
-      <label for="specified">specified</label>
-      <select id="specified" class="form-control"  name="specified">
-        <option selected>Nil..</option>
+
+      <div class="form-group col-sm-6" style="margin-left: 0px;
+    margin-right: 17px;
+    margin-top: 34px;">
+     
+      <select id="specified" class="form-control"  name="specified" required>
+        <option selected>specilized..</option>
        	<option value="Gynaecology">Gynaecology</option>                                    
 				<option value="Haematology">Haematology</option>
          <option value="Nephrology">Nephrology</option>
@@ -55,13 +68,14 @@
        <option value="Orthopaedics">Orthopaedics</option>
         </div>
       </select>
-    </div>
-            <div class="form-group col-md-4 clearfix " style="padding-Top: 20px;padding-left:236px;" > 
-            <button type="submit" class="btn btn-primary pull-left ">ADD</button>
+       <div class="form-group col-md-4 clearfix "  > 
+            <button type="submit" class="btn btn-primary pull-left " style="margin-top: 28px;
+    margin-left: 31px;">ADD</button>
             </div>
-            </div>
-        </form>
-    </div>
-</div>
-</div>
+                </form>
+    </div>     
+    </div> 
+
+  </div>
+
 </div>

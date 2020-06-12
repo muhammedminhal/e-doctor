@@ -51,7 +51,7 @@ router.get('/signup', function(req, res, next) {
 
   // profile route
 
-  router.get('/profile',isAuthenticated, (req, res)=>{
+  router.get('/profile', (req, res)=>{
     var messages = req.flash('error');
     res.render('admin/profile',{ messages: messages, hasErrors: messages.length > 0})
 });
@@ -79,7 +79,7 @@ router.post('/profile', (req, res)=>{
 
 // doctor list route
 
-router.get('/list',isAuthenticated,(req, res)=>{
+router.get('/list',(req, res)=>{
 AdminModel.find((err, docs)=>{
     if(!err){
         res.render('admin/list',{data : docs})

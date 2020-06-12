@@ -1,0 +1,148 @@
+.header{
+    background: linear-gradient(59deg, #3A6073, #16222A);
+    height:83px;
+    width: 100%;
+    position: relative;
+   
+}
+
+body{
+    margin: 0;
+}
+
+.logo{
+    width: 50px;
+    padding-top: 23px;
+    float: left;
+   
+}
+
+.main{
+    height: 306px;
+}
+
+
+.a{
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+    font-weight: bold;   
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin-left: 180px;
+   
+}
+
+.a:hover{
+    color:cadetblue;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.img{
+   
+    width: 25%;
+    height: 288%;
+    float: left;
+    
+}
+
+.about{
+    color:rgb(34, 100, 100);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 335px;
+}
+
+.left-section{
+    color:rgb(39, 95, 99);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 257%;
+    float: left;
+}
+
+.right-section{
+    width: 20%;
+    float: left;
+    padding-left: 152px;
+    padding-top: 0px;
+}
+
+
+
+.p{
+    width: 412px;
+    font-size: 17px;
+    color: dimgrey;
+}
+
+.h2{
+    width: 261px;
+    margin-left: 138px;
+
+}
+
+a.choose
+{
+    width: 45px;
+    color: #337ab7;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin-left: 18px;
+    
+    font-size: 19px;
+    padding-left: 103px;
+
+}
+
+a.choose:hover{
+    color: dimgrey;
+    text-decoration: none;
+}
+
+
+
+/* --------------------------------------------------------------- */
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url('/w3images/parallax1.jpg');
+  min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+  background-image: url("/w3images/parallax2.jpg");
+  min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+  background-image: url("/w3images/parallax3.jpg");
+  min-height: 400px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+}

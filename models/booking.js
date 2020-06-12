@@ -27,11 +27,7 @@ var BookingSchema = new mongoose.Schema({
         required:"Required",
        
     },
-    time :{
-        type: String,
-        required:"Required",
-      
-    },
+   
     mobile :{
         type: String,
         required:"Required",

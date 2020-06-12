@@ -1,38 +1,60 @@
 
 {{>header2}}
-<div class="container"></div>
 
-<div class=" row">
-    <div style="padding-left: 280px; padding-top:120px">
-   <div  class="col-sm-8 offset-md-6" style="background-color: rgb(13, 15, 15);margin-top: 25px;padding-bottom:20px;padding-top:20px">
-        <h1>My Details</h1>
+
+ {{!--               --}}
+   <div class="container">    
         
-        <form action="/patient/myprofile" method="post">
- <div class="form-group col-md-6">
-    <label for="staticEmail" class="col-md-3 col-form-label">Name</label>
-    <div class="col-md-6">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{binjo.name}}">
+    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
+        
+        <div class="row">                
+            <div class="iconmelon">
+              <svg viewBox="0 0 32 32">
+                <g filter="">
+                  <use xlink:href="#git"></use>
+                </g>
+              </svg>
+            </div>
+        </div>
+                <form name="form" id="form" class="form-horizontal"  action="/doctor/myprofile" method="post">
+                  
+                   <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  type="name" class="form-control" name="name" placeholder="Name" value="{{binjo.name}}"  >
+                    </div> 
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input  type="text" class="form-control" name="email" value="{{binjo.email}}" placeholder="email" >                                        
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input  type="blood" class="form-control" name="blood" placeholder="blood" value="{{binjo.blood}}">
+                    </div>     
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                        <input  type="string" class="form-control" name="mobile" placeholder="mobile" value="{{binjo.mobile}}">
+                    </div> 
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-road"></i></span>
+                        <input  type="text" class="form-control" name="city" placeholder="city" value="{{binjo.city}}">
+                    </div>  
+
+                     <div class="input-group">
+                       
+
+                    <div class="form-group">
+
+                      
+
+                </form>     
+
+            </div>                     
+        </div>  
     </div>
-  </div>
- <div class="form-group col-md-6">
-    <label for="staticEmail" class="col-md-3 col-form-label">Email</label>
-    <div class="col-md-6">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{binjo.email}}">
-    </div>
-  </div>
-   <div class="form-row">
-   <div class="form-group col-md-6">
-    <label for="staticEmail" class="col-md-3 col-form-label">Phone Number</label>
-    <div class="col-md-6">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{binjo.mobile}}">
-    </div>
-  </div>
-   <div class="form-group col-md-6">
-    <label for="staticEmail" class="col-md-3 col-form-label">city</label>
-    <div class="col-md-6">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{binjo.city}}">
-    </div>
-  </div>
-  </div>
- </form>
-       
+</div>
+
+    {{>footer}}

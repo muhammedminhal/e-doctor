@@ -93,6 +93,7 @@ router.get('/profile',(req,res)=>{
 // });
 
 router.post("/profile",(req,res)=>{
+  
   var booking = new BookingModel({
     email:req.body.email,
     name:req.body.name,
@@ -101,16 +102,20 @@ router.post("/profile",(req,res)=>{
     doctor  : req.body.doctor ,
     date : moment(req.body.date).format("DD/MMM/YYYY"),
     mobile:req.body.mobile,
-    time : req.body.time});
+  
+  
+});
 
   booking.save((err ,doc)=>{
+    console.log("ddoc"+req.body.age)
+    
     if(!err)
     {
         res.redirect('/patient/list');
     }
     else
     {
-        res.send('Error occured');
+        res.send('Error occured in insertion'+err);
     }
 })
 });
@@ -123,7 +128,7 @@ router.get('/list',(req, res)=>{
   var mobile = req.session.loginpatient
   BookingModel.find({"email":mobile})
   .then((docs)=>{
-    console.log(docs)
+  
     res.render('patient/list',{data :docs});
   })
   .catch((err)=>{

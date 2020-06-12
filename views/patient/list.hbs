@@ -1,23 +1,30 @@
 {{>header2}}
 
-<h1>
-    Appointments
-</h1>
-<table class="table table-striped">
-     <thead>
-    <tr>
-         <th>email</th>
-        <th>Name</th>
-        <th>mobile</th>
-        <th>Age</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Doctor</th>
-        <th>Specified</th>
-       
-    </tr>
-    </thead>
-    <tbody >
+
+{{!-- ............. --}}
+
+<div class="container" style="margin-top: 112px;">
+    <div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">My Bookings</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-"></span></button>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr class="filters">
+                        <th><input type="text" class="form-control" placeholder="Email" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Name" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="Mobile" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Age" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Time" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Doctor" disabled></th>
+                          <th><input type="text" class="form-control" placeholder="Specialized" disabled></th>
+                    </tr>
+                </thead>
+     <tbody >
    {{#each data}}
     <tr>
         <td>{{this.email}}</td>
@@ -31,5 +38,10 @@
     </tr>
 {{/each}}
     </tbody>
-</table>
+            </table>
+        </div>
+    </div>
 </div>
+</div>
+
+{{>footer}}

@@ -1,17 +1,117 @@
-<div class="jumbotron">
-  <h1 class="title">E-DOCTOR</h1>
-  <img src="data:image/png;base64,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" alt="..." class="img-responsive">
+
+<div class="full">
+
+<div class="doctor">
+        <div class="header">
+            <div class="logo">
+<a class="a" href="/">eDoctor</a>
+            </div>
+       
+            </div>
+
+        </div>
+   
+   
+    {{!-- main --}}
+    <div class="row">
+<div class="left-section">
+       <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
+        
+        <div class="row">                
+            <div class="iconmelon" style="height: 200px;     height: 81px;
+    margin-top: -130px;">
+              <svg viewBox="0 0 32 32">
+                <g filter="">
+                  <use xlink:href="#git"></use>
+                </g>
+              </svg>
+            </div>
+        </div>      
+        
+<h2 class="h2">Choose Your Login
+              </h2>
+             
+              <a class="choose"  style="    font-size: 21px;" href="/doctor/signin">Doctor</a>
+          <a class="choose" style="    font-size: 21px;" href="/patient/signin">Patient</a>
+</div>
+</div>
+</div>
+ 
+
+
+
+  {{!-- ------------------------------------------------------------------------------------------------------------------ --}}
+
+  
+
+
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+  <h3 class="w3-center">ABOUT US</h3>
+  <p class="w3-center"><em></em></p>
+  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      <p><b><i class="fa fa-user w3-margin-right"></i>eDoctor</b></p><br>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSb4HG01K2qttBks6IQgdiOHDS1P6CAKUcEwGlXserUOVAafFfC&usqp=CAU" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+    </div>
+
+    <!-- Hide this text on small devices -->
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+      <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+  <p class="w3-large w3-center w3-padding-16">WE HAVE:</p>
+  <p class="w3-wide">Service</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:100%">100%</div>
+  </div>
+  <p class="w3-wide">Experienced Doctors</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:90%">90%</div>
+  </div>
+  <p class="w3-wide">Clients</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:75%">75%</div>
+  </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4 col-md-offset-4">
-        <h1 class="choose">Choose Your Login</h1>
-        <div>
-            <ul class="nav nav-pills nav-stacked">
-  {{!-- <li role="presentation" class="active"><a href="/admin/signup">Admin</a></li> --}}
-  <li role="presentation"><a href="/doctor/signin">Doctor</a></li>
-  <li role="presentation"><a href="/patient/signin">Patient</a></li>
-</ul>
-        </div>
+
+<!-- Container (Contact Section) -->
+<div class="w3-content w3-container w3-padding-64" id="contact">
+  <h3 class="w3-center">eDoctor</h3>
+  <p class="w3-center"><em>We love your feedback!</em></p>
+
+  <div class="w3-row w3-padding-32 w3-section">
+    <div class="w3-col m4 w3-container">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_rOm61Qd-V-ZsAw_w9lVMnxoXgyS6R5Tbfo6m6o8k1dvAJzMK&usqp=CAU" class="w3-image w3-round" style="width:100%">
     </div>
+    <div class="w3-col m8 w3-panel">
+      <div class="w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Chicago, US<br>
+        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
+        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
+      </div>
+      <p> leave us a note:</p>
+      <form action="/action_page.php" target="_blank">
+        <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+          <div class="w3-half">
+            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+          </div>
+          <div class="w3-half">
+            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+          </div>
+        </div>
+        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+        <button class="w3-button w3-black w3-right w3-section" type="submit">
+          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
+

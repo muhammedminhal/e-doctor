@@ -1,0 +1,104 @@
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+
+header{
+  background-color: linear-gradient(59deg, #3A6073, #16222A);
+
+}
+
+
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+        padding-left: 179px;
+        padding-top: 38px;
+        text-decoration: none;
+        color:ivory
+  }
+  
+  /* Change the background color on mouse-over */
+  .header a.logo:hover {
+      cursor: pointer;
+    color:lightgray;
+ 
+  }
+  
+
+  /* Float the link section to the right */
+  .header-right {
+    float: right;
+    padding-right: 40px;
+    padding-top: 35px;
+    font-size: x-large;
+  }
+  
+a.link{
+    padding: 24px;
+    text-decoration: none;
+    color: #fff;
+    font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+    font-size: medium;
+}
+
+a.link1{
+    padding: 24px;
+    text-decoration: none;
+    color: #fff;
+    font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+    font-size: medium;
+}
+
+a.link2{
+    padding-left: 24px;
+    text-decoration: none;
+    color: #fff;
+    font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+    font-size: medium;
+}
+
+
+a.link3{
+  padding-left: 24px;
+  text-decoration: none;
+  color: #fff;
+  font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+  font-size: medium;
+}
+
+a.link:hover{
+  color: #3A6073;
+  cursor: pointer;
+  font-size: small;
+}
+
+a.link1:hover{
+  color: #3A6073;
+  cursor: pointer;
+  font-size: small;
+}
+
+a.link2:hover{
+  color: #3A6073;
+  cursor: pointer;
+  font-size: small;
+}
+
+a.link3:hover{
+  color: #3A6073;
+  cursor: pointer;
+  font-size: small;
+}
+
+
+  /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+  @media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .header-right {
+      float: none;
+      padding-right: 225px;
+    padding-top: 34px;
+    }
+  }

@@ -12,29 +12,54 @@ var moment = require('moment')
 
 //signup route
 
-router.get('/signup', function(req, res, next) {
-    var messages = req.flash('error');
-    res.render('doctor/signup', { messages: messages, hasErrors: messages.length > 0});
-  });
-  
-  router.post('/signup',(req,res)=>{
-    var Doctor = new DoctorModel();
-    Doctor.name = req.body.name;
-    Doctor.specialized = req.body.specialized;
-    Doctor.blood = req.body.blood;
-    Doctor.mobile = req.body.mobile;
-    Doctor.city = req.body.city;
-    Doctor.email = req.body.email;
-    Doctor.password = req.body.password;
+router.get('/signup', function(req, res) {
    
-    Doctor.save((err,doc)=>{
+    res.render('doctor/signup');
+  });
+
+
+  // router.post('/signup',(req,res)=>{
+  //   var doctor = new DoctorModel({
+  //     name : req.body.name,
+  //     email : req.body.email,
+  //     password : req.body.password,
+  //     mobile : req.body.mobile,
+  //     city : req.body.city,
+  //     specialized : req.body.specialized,
+  //     blood : req.body.blood,
+     
+  //    });
+    
+  //   doctor.save((err,doc)=>{
+  //     console.log('mammty'+doc);
+  //     if(!err){
+  //       res.redirect('/doctor/signin')
+  //     }else{
+  //       console.log('error'+err);
+  //     }
+  //   });
+  // });
+
+  router.post('/signup',(req,res)=>{
+    doctor = new DoctorModel({
+          name : req.body.name,
+          email : req.body.email,
+          password : req.body.password,
+          mobile : req.body.mobile,
+          city : req.body.city,
+          specialized : req.body.specialized,
+          blood : req.body.blood,
+       
+    })
+    doctor.save((err,docs)=>{
+      
       if(!err){
         res.redirect('/doctor/signin')
       }else{
         console.log('error'+err);
       }
-    });
-  });
+    })
+  })
 
   
  
@@ -58,7 +83,7 @@ router.get('/signup', function(req, res, next) {
         req.session.loginUser=doctor.email
         req.session.loginUsers=doctor.name
         res.redirect('/doctor/appoitments')
-      //  res.render('doctor/profile',{data: doctor});
+  
       })
     }
   });
@@ -73,7 +98,7 @@ router.get('/signup', function(req, res, next) {
 const date = moment().format("DD/MMM/YYYY")
 var doctor = req.sessionloginUsers
 
-Booking.find({"date":{$gt: date },"cancelStatus":false},(err,tommorow)=>{
+Booking.find({"date":{$gte: date },"cancelStatus":false},(err,tommorow)=>{
   if(err){
     res.send('error:'+err)
   }
@@ -81,8 +106,7 @@ Booking.find({"date":{$gt: date },"cancelStatus":false},(err,tommorow)=>{
     if(err){
       res.send('error:'+err)
     }
-    
-    Booking.find({"date":{$eq : date },"cancelStatus":false,"bookingStatus": false},(err,today)=>{
+    Booking.find({"date":{$eq : date },"cancelStatus":false,},(err,today)=>{
       if(err){
         res.send('error:'+err)
       }
@@ -94,7 +118,7 @@ Booking.find({"date":{$gt: date },"cancelStatus":false},(err,tommorow)=>{
        })
     })
 })
-  })
+  }).sort({date:-1})
 })
 
 // view single patient route
@@ -117,35 +141,42 @@ Booking.find({"email": mail},(err,single)=>{
 router.get('/consult',(req,res)=>{
 
   var email = req.query.id
- 
+  var consultid = req.session.conbook
     Booking.findOne({"email":email},(err,result)=>{
-    
       req.session.conbook=result.email
-        if(!err){
-          res.render('doctor/consult',{hell:result})
-        }else{
-    res.send('error'+err)
+        if(err){
+          res.send('error'+err)
         }
+        consult.find({"email":consultid,"removestatus":false},(err,doc)=>{
+          if(err){
+            res.send("error"+err)
+          } 
+          res.render('doctor/consult',{hell:result,data:doc})
+        
       }) 
 })
-
+})
 // consult post route
 
 router.post('/consult',(req,res)=>{
   var doctorConsult = new consult({
     email:req.body.email,
     medicine:req.body.medicine,
-    comments:req.body.comments,
-    consultid : Math.ceil(Math.random()*250)+''
+    // comments:req.body.comments,
+    // consultid : Math.ceil(Math.random()*250)+''
   })
   doctorConsult.save((err,result)=>{
+    console.log(result)
     if(!err){
-      res.redirect("/doctor/prescrption")
+      res.redirect("/doctor/consult?id="+result.email)
     }else{
       res.send('error'+err)
     }
   })
 })
+
+
+
 
 // prescription find route
 
@@ -161,8 +192,24 @@ consult.find({"email":consultid},(err,result)=>{
 })
 })
 
+// medicine remove
+
+router.get("/remove/:id",(req,res)=>{
+  
+  consult.findById(req.params.id,(err,doc)=>{
+    if(!err){
+      doc.removestatus= true;
+      doc.save()
+      res.redirect('/doctor/consult?id='+doc.email)
+
+    }else{
+      res.send('error'+err)
+    }     
+})
+})
 
 // // dellete
+
 router.get("/delete/:id",(req,res)=>{
   
     Booking.findById(req.params.id,(err,doc)=>{
@@ -177,7 +224,6 @@ router.get("/delete/:id",(req,res)=>{
   })
 })
 
-
 // done route
 router.get("/done/:id",(req,res)=>{
   Booking.findById(req.params.id,(err,doc)=>{
@@ -190,7 +236,7 @@ router.get("/done/:id",(req,res)=>{
     }
   })
 })
-
+// finished route
 router.get("/finished",(req,res)=>{
   Booking.find({"bookingStatus":true},(err,data)=>{
     if(!err){
@@ -211,10 +257,7 @@ Patient.find((err,patient)=>{
 })
 })
 
-
-
 //patiant my profile
-
 
   router.get('/profile',(req,res)=>{
     var id = req.session.loginUser
@@ -228,8 +271,6 @@ if(!err){
 }
     }));
   });
-
-
 
   // authentication funtion to authenticate
 
