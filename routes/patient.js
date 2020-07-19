@@ -111,7 +111,9 @@ router.post("/profile",(req,res)=>{
     
     if(!err)
     {
+      
         res.redirect('/patient/list');
+       
     }
     else
     {
@@ -124,36 +126,39 @@ router.post("/profile",(req,res)=>{
 
 // booking list route
 
-router.get('/list',(req, res)=>{
-  var mobile = req.session.loginpatient
-  BookingModel.find({"email":mobile})
-  .then((docs)=>{
-  
-    res.render('patient/list',{data :docs});
-  })
-  .catch((err)=>{
-    console.log(err)
-  });
-  });
-
-  
-
-// patient list route 
-
-// router.get('/prlist',(req, res)=>{
-//   PatientModel.find((err, docs)=>{
-//       if(!err){
-//           res.render('patient/prlist',{data : docs})
-//       }
-//       else{
-//           res.send('error')
-//       }
+// router.get('/list',(req, res)=>{
+//   var mobile = req.session.loginpatient
+//   BookingModel.find({"email":mobile,"bookingStatus":false})
+//   .then((docs)=>{
+//     res.render('patient/list',{data :docs});
+//   })  
+//   .catch((err)=>{
+//     console.log(err)
 //   });
 //   });
   
 
-
+  router.get('/list',(req, res)=>{
+    var mobile = req.session.loginpatient
+    BookingModel.find({"email":mobile,"bookingStatus":false},(err,docs)=>{
+      if(err){
+        console.log(err)
+      }
+      BookingModel.find({"email":mobile,"bookingStatus":true},(err,finished)=>{
+        if(err){
+          console.log(err)
+        }
+          res.render('patient/list',{data:docs,finished :finished});
+        
+      })
+     })
+    })
+ 
+ 
+    
+    
   
+
 
   //my details route byone
 
@@ -165,7 +170,6 @@ router.get('/list',(req, res)=>{
       }else{
           res.send('error')
       }
-      console.log()
   }));
   });
   

@@ -1,44 +1,19 @@
- {{!-- <div class="col-md-8" style="text-align: center; padding-top:40px;padding-left:290px; ">
- <form action="/doctor/consult" method="post">
-            <div class="form-group">
-        
-<h1 class="form-group" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;color:rgba(8, 65, 100, 0.747)">
-   Patient  {{hell.name}}'s Prescription
-</h1>
-  <div class="form-group">
- 
-      <input type="hidden" readonly class="form-control-plaintext" id="staticEmail" name="email" value="{{hell.email}}">
-    </div>
 
-                <label for="medicine">Add medicne</label>
-                <input type="text" id="medicine" style="background-color: rgba(4, 51, 90, 0.795); color:white" placeholder="Prescription" name="medicine" class="form-control">
-                <div class="form-group">
-    <label for="comments">comments</label>
-    <textarea class="form-control" id="comments" name="comments" placeholder="comments" style="background-color:rgba(13, 110, 175, 0.418);" rows="3"></textarea>
-  </div>
-  </div>
-  <a href="/doctor/prescrption"><button type="button" class="btn btn-primary" style="float: inline-start; background-color:rgba(70, 130, 243, 0.651)">view</button></a><br>
-   <ul><a href="/doctor/appoitments"  style="float: left;padding-bottom:200px;padding-top:15px;">Back</a></ul>
-
-  
-   <button type="submit" class="btn btn-primary" style="float: right;">submit</button></a><br>
- 
-                  </form>
-            
-             </div>
-            </div>  --}}
-
-
+<div class="main">
+    <div class="head">
 {{>header}}
+    </div>
+    <div class="right">
 
-<div class="container">    
-        
+<div class="container" style="float: left;
+    margin-top: 153px;margin-left: -89px;">    
+    
     <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
        
         
-        <div class="panel panel-default" style="    margin-top: 151px;" >
+        <div class="panel panel-default" style="margin-top: -61px;" >
             <div class="panel-heading">
-                <div class="panel-title text-center">patient {{hell.name}}'s prescription</div>
+                <div class="panel-title text-center" style="text-transform: uppercase; font-size:12px;">patient {{hell.name}}'s prescription</div>
             </div>     
 
        
@@ -51,36 +26,26 @@
                     </div>
 
                     <div class="input-group">
-                                                <input id="medicine" type="medicine" class="form-control" name="medicine" placeholder="medicine" required>
+                                                <input id="medicine" type="medicine" class="form-control" name="medicine" placeholder="medicine" >
                       
                     </div> 
-                     <button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Add</button>   
-                    <div class="table" style="    margin-left: 214px;">
-                        <table>
-                            <thead >
-                                <tr>
-                                    <th></th>
-                                <th></th>
-                                </tr>
-                                
-                            </thead>
-                            <tbody>
-                                {{#each data}}
-                                <tr>
-<td>{{this.medicine}}</td>
-  <td><a href="/doctor/remove/{{this._id}}" ><button type="button" style="font-size: 12px;" class="btn btn-primary"><i class="fas fa-trash fa-lg" style="font-size: 12px;" aria-hidden="true"></button></i></a></td> 
+                     <button type="submit" href="#" id="add" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Add</button>   
+                    <div class="table" style="margin-left: 66px;">
+                   
+                        
+<ul id="med-list" >
 
-                                </tr>
-                                {{/each}}
-                            </tbody>
-</table>
-
+</ul>
+                          
+ <textarea id="comments" type="text" class="clearfix" name="comments" placeholder="comments" style="    margin-top: 41px;
+    margin-left: -55px;"></textarea>
+<button type="submit" style="    margin-left: -89px;
+    margin-top: 101px;
+    position: fixed;" >Submit</button>
+   <a href="/doctor/done/{{hell.id}}" onclick="return confirm('Click OK to mark  {{this.name}} finished conslting ');"><button type="button" class="btn btn-success">Done</button></a>
+ 
                     </div>
-                     <div class="input-group">
-                        
-                        <textarea id="comments" type="comments" class="form-control" name="comments" placeholder="comments"></textarea>
-                        
-                    </div>                                                                 
+                                                                                
 
                     <div class="form-group">
                         <!-- Button -->
@@ -94,4 +59,134 @@
             </div>                     
         </div>  
     </div>
+
+    </div>
+    <div class="left">
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary filterable" style="    overflow: overlay;">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-transform: uppercase;  font-size:12px; text-align:center">{{hell.name}}'s Details And History </h3>
+              
+            </div>
+            <table class="table">
+                <thead>
+
+                    <tr class="filters">
+                        <th><input type="text" class="form-control" placeholder="Email" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Name" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="Mobile" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Age" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="id" disabled></th>
+         <th></th>
+                    </tr>
+                </thead>
+     <tbody >
+
+    <tr>
+        <td>{{hell.email}}</td>
+               <td>{{hell.name}}</td>
+                      <td>{{hell.mobile}}</td>
+                             <td>{{hell.age}}</td>
+                              <td>{{hell._id}}</td>
+                             <td> <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">History</button></td>
+                            
+    </tr>
+
+    </tbody>
+  
+
+            </table>
+              <div id="demo" class="collapse">
+
+    <table class="table">
+                <thead>
+                    <tr class="filters">
+                        
+                        <th><input type="text" id="med" class="form-control" placeholder="Medicines" disabled></th>
+                        <th><input type="text" id="med" class="form-control" placeholder="Comments" disabled></th>
+                        <th><input type="text" id="med" class="form-control" placeholder="Date" disabled></th>
+            
+                
+                    </tr>
+                </thead>
+       <tbody >
+   {{#each medicines}}
+    <tr>
+    
+        <td>{{this.medicines}}</td>
+        <td>{{this.comments}}</td>
+        <td>{{this.date}}</td>
+     
+{{/each}}
+    </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+</div>
+  </div>
+        </div>
+    </div>
+</div>
+</div> 
+    </div>
+
+{{!-- new form script --}}
+<script>
+$(document).ready(function(){
+    $('#add').on('click',function(event){
+event.preventDefault();
+let medicine = $("#medicine").val();
+$.ajax({
+    url:'/doctor/ajax',
+    method:'post',
+    data:{
+        medicine:medicine
+    },
+    success:function(res){
+$("#med-list").append($('<li>').text(medicine))
+    }
+})
+
+
+    })
+})
+    
+
+</script>
+
+
+<style>
+
+    .container{
+      margin-top: 143px;
+    float: left;
+    margin-right: -34px;
+    width: 50%;
+}
+
+@media (min-width: 1200px){
+.container {
+    width: 50%;
+}
+}
+.main {
+    height: 469px;
+}
+
+
+
+
+footer.container{
+    float: none;
+}
+
+
+#med{
+    background-color:lightblue
+}
+
+
+</style>

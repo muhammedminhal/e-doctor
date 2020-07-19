@@ -15,11 +15,11 @@
               </svg>
             </div>
         </div>
-                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" action="/doctor/signup" method="post">
+                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" action="/doctor/profile" method="post">
                   
                    <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input  type="name" class="form-control" name="name" placeholder="Name" value="{{doctor.name}}"  >
+                        <input style="text-transform:uppercase" type="name" class="form-control" name="name" placeholder="Name" value="{{doctor.name}}"  >
                     </div> 
 
                     <div class="input-group">
@@ -55,3 +55,5 @@
         </div>  
     </div>
 </div>
+
+ {{>footer}}

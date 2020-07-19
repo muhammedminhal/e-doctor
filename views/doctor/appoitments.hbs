@@ -20,7 +20,7 @@
  <div class="tabPanel">
 <div class="container">
     <div class="row">
-        <div class="panel panel-primary filterable">
+        <div class="panel panel-primary filterable" style="width: 98%;">
             <div class="panel-heading">
                 <h3 class="panel-title">Todays Appointments</h3>
                 <div class="pull-right">
@@ -32,9 +32,7 @@
                     <tr class="filters">
                         <th><input type="text" class="form-control" placeholder="Email" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Age" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Time" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Doctor" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Specified" disabled></th>
                     </tr>
@@ -44,14 +42,12 @@
     <tr>
         <td>{{this.email}}</td>
         <td><a href="/doctor/views/?id={{this.email}}">{{this.name}}</a></td>
-        <td>{{this.age}}</td>
         <td>{{this.date}}</td>
-        <td>{{this.time}}</td>
         <td>{{this.doctor}}</td>
         <td>{{this.specified}}</td>
-       <td><a href="/doctor/consult?id={{this.email}}"><button type="button" class="btn btn-success">Consult</button></a></td>
-<td><a href="/doctor/delete/{{this._id}}" onclick="return confirm('This will Cancel {{this.name}}`s Booking!! ');"><button type="button" style="font-size: 12px;" class="btn btn-success"><i class="fas fa-trash fa-lg" style="font-size: 12px;" aria-hidden="true">Cancel Booking</button></i></a></td> 
-<td><a href="/doctor/done/{{this.id}}" onclick="return confirm('Click OK to mark  {{this.name}} finished conslting ');"><button type="button" class="btn btn-success">Done</button></a></td>    </tr>
+       <td><a href="/doctor/consult?id={{this._id}}"><button type="button" class="btn btn-info">Consult</button></a></td>
+<td><a href="/doctor/delete/{{this._id}}" onclick="return confirm('This will Cancel {{this.name}}`s Booking!! ');"><button type="button" style="font-size: 12px;" class="btn btn-info"><i class="fas fa-trash fa-lg" style="font-size: 12px;" aria-hidden="true">Cancel Booking</button></i></a></td> 
+<td><a href="/doctor/done/{{this.id}}" onclick="return confirm('Click OK to mark  {{this.name}} finished conslting ');"><button type="button" class="btn btn-info">Done</button></a></td>    </tr>
 {{/each}}
     </tbody>
             </table>
@@ -66,7 +62,7 @@
 <div class="tabPanel">
 <div class="container">
     <div class="row">
-        <div class="panel panel-primary filterable">
+        <div class="panel panel-primary filterable" style="width: 98%;">
             <div class="panel-heading">
                 <h3 class="panel-title">Upcoming Appointments</h3>
                 <div class="pull-right">
@@ -78,9 +74,7 @@
                     <tr class="filters">
                         <th><input type="text" class="form-control" placeholder="Email" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Age" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Time" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Doctor" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Specified" disabled></th>
                     </tr>
@@ -90,13 +84,10 @@
     <tr>
         <td>{{this.email}}</td>
         <td><a href="/doctor/views/?id={{this.email}}">{{this.name}}</a></td>
-        <td>{{this.age}}</td>
         <td>{{this.date}}</td>
-        <td>{{this.time}}</td>
         <td>{{this.doctor}}</td>
         <td>{{this.specified}}</td>
-     <td><a href="/doctor/consult?id={{this.email}}"><button type="button" style="font-size: 12px;" class="btn btn-success">consult</button></a></td>
-<td><a href="/doctor/delete/{{this._id}}" onclick="return confirm('This will Cancel {{this.name}}`s Booking!! ');"><button type="button" style="font-size: 12px;" class="btn btn-success"><i class="fas fa-trash fa-lg" style="font-size: 12px;" aria-hidden="true">Cancel Booking</button></i></a></td>
+<td><a href="/doctor/delete/{{this._id}}" onclick="return confirm('This will Cancel {{this.name}}`s Booking!! ');"><button type="button" style="font-size: 12px;" class="btn btn-info"><i class="fas fa-trash fa-lg" style="font-size: 12px;" aria-hidden="true">Cancel Booking</button></i></a></td>
     </tr>
 {{/each}}
     </tbody>
@@ -112,7 +103,7 @@
 <div class="tabPanel">
 <div class="container">
     <div class="row">
-        <div class="panel panel-primary filterable">
+        <div class="panel panel-primary filterable" style="width: 98%;">
             <div class="panel-heading">
                 <h3 class="panel-title">Finished Appointments</h3>
                 <div class="pull-right">
@@ -124,9 +115,7 @@
                     <tr class="filters">
                         <th><input type="text" class="form-control" placeholder="Email" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Age" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Time" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Doctor" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Specified" disabled></th>
                     </tr>
@@ -136,9 +125,7 @@
     <tr >
         <td style="padding-right:20px;">{{this.email}}</td>
         <td><a href="/doctor/views/?id={{this.email}}">{{this.name}}</a></td>
-        <td>{{this.age}}</td>
         <td>{{this.date}}</td>
-        <td>{{this.time}}</td>
         <td>{{this.doctor}}</td>
         <td>{{this.specified}}</td>
     </tr>
@@ -157,7 +144,7 @@
 <div class="tabPanel">
 <div class="container">
     <div class="row">
-        <div class="panel panel-primary filterable">
+        <div class="panel panel-primary filterable" style="width: 98%;">
             <div class="panel-heading">
                 <h3 class="panel-title">Expired Appointments</h3>
                 <div class="pull-right">
@@ -169,9 +156,7 @@
                     <tr class="filters">
                         <th><input type="text" class="form-control" placeholder="Email" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Age" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Time" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Doctor" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Specified" disabled></th>
                     </tr>
@@ -181,9 +166,7 @@
     <tr>
         <td>{{this.email}}</td>
         <td><a href="/doctor/views/?id={{this.email}}">{{this.name}}</a></td>
-        <td>{{this.age}}</td>
         <td>{{this.date}}</td>
-        <td>{{this.time}}</td>
         <td>{{this.doctor}}</td>
         <td>{{this.specified}}</td>
         
@@ -207,7 +190,7 @@
     <div class="tabPanel">
 <div class="container">
     <div class="row">
-        <div class="panel panel-primary filterable">
+        <div class="panel panel-primary filterable" style="width: 98%;">
             <div class="panel-heading">
                 <h3 class="panel-title">Cancelled Appointments</h3>
                 <div class="pull-right">
@@ -219,9 +202,7 @@
                     <tr class="filters">
                         <th><input type="text" class="form-control" placeholder="Email" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Age" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Time" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Doctor" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Specified" disabled></th>
                     </tr>
@@ -231,9 +212,8 @@
     <tr >
         <td style="padding-right:20px;">{{this.email}}</td>
         <td><a href="/doctor/views/?id={{this.email}}">{{this.name}}</a></td>
-        <td>{{this.age}}</td>
+       
         <td>{{this.date}}</td>
-        <td>{{this.time}}</td>
         <td>{{this.doctor}}</td>
         <td>{{this.specified}}</td>
     </tr>
@@ -249,9 +229,10 @@
     </div>
    
 </div>
+<div class="bot" style="margin-top: 220px;">
+    {{>footer}}
 </div>
-
-
+</div>
 
 
 

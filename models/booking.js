@@ -15,16 +15,17 @@ var BookingSchema = new mongoose.Schema({
     },
     specified :{
         type: String,
-        required:"Required"
+        required:true
     },
     doctor :{
         type: String,
-        required:"Required"
+        required:true
+       
     },
     date :{
         type: String,
         default:Date.now,
-        required:"Required",
+        required:true
        
     },
    

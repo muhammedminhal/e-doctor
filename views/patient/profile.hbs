@@ -4,7 +4,9 @@
   </div>
   <div class="mid">
 
-        
+        <div class="success">
+{{title}}
+        </div>
     <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
         
         
@@ -32,11 +34,7 @@
                        
                         <input  type="hidden" class="form-control" name="mobile" placeholder="mobile" value="{{patient.mobile}} ">
                      
-                      <div class="input-group">
-                        
-                        <input type="number" class="form-control" name="age" placeholder="age in numbers"  min="5" max="120"   >
-                    </div>     
-
+                 
                     <div class="input-group">
               
                         <input  type="date" class="form-control" name="date" placeholder="date" required>
@@ -46,9 +44,9 @@
                        
        
       <select id="doctor" class="form-control"  name="doctor" required>
-        <option selected>doctor..</option>
+        <option selected> Select Doctor..</option>
        {{#each doctor}}
-        <option >{{this.name}}</option>
+        <option style="text-transform: uppercase;">Dr.{{this.name}}</option>
         {{/each}}
         </div>
       </select>

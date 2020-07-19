@@ -76,8 +76,8 @@ body{
 
 .h2{
     width: 261px;
-    margin-left: 138px;
-
+    margin-left: 180px;
+    margin-top: 0px;
 }
 
 a.choose
@@ -87,10 +87,10 @@ a.choose
     text-decoration: none;
     font-weight: bold;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    margin-left: 18px;
+
     
     font-size: 19px;
-    padding-left: 103px;
+    padding-left: 153px;
 
 }
 
@@ -146,3 +146,36 @@ body, html {
     min-height: 400px;
   }
 }
+
+
+
+.parallax {
+  /* The image used */
+  background-image: url(https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/317/317991/doctor-in-branding-article.jpg?w=1155&h=1314https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/317/317991/doctor-in-branding-article.jpg?w=1155&h=1314);
+
+  /* Set a specific height */
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+ }
+
+
+
+
+ .parallax2{
+  /* The image used */
+  background-image: url(https://tcoyd.org/wp-content/uploads/2018/09/iStock-177623632.HappyDoctors.SM_.jpg);
+
+  /* Set a specific height */
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+ }
